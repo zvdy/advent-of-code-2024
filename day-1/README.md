@@ -1,3 +1,15 @@
+
+Advent of Code
+
+    [About][Events][Shop][Settings][Log Out]
+
+zvdy 6*
+   <y>2024</y>
+
+    [Calendar][AoC++][Sponsors][Leaderboard][Stats]
+
+Our sponsors help make Advent of Code possible:
+Kotlin by JetBrains - Ho-ho-hold on to your code! Unwrap coding fun with Advent of Code in Kotlin – tackle daily puzzles, watch our livestreams for tips, and join our merry community. Wishing you happy coding and warm holidays! kotl.in/aoc2024
 --- Day 1: Historian Hysteria ---
 
 The Chief Historian is always present for the big Christmas sleigh launch, but nobody has seen him in months! Last anyone heard, he was visiting locations that are historically significant to the North Pole; a group of Senior Historians has asked you to accompany them as they check the places they think he was most likely to visit.
@@ -40,7 +52,7 @@ To find the total distance between the left list and the right list, add up the 
 
 Your actual left and right lists contain many location IDs. What is the total distance between your lists?
 
-
+Your puzzle answer was 1882714.
 --- Part Two ---
 
 Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.
@@ -72,3 +84,5 @@ For these example lists, here is the process of finding the similarity score:
 So, for these example lists, the similarity score at the end of this process is 31 (9 + 4 + 0 + 0 + 9 + 9).
 
 Once again consider your left and right lists. What is their similarity score?
+
+Your puzzle answer was 19437052.
