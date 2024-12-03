@@ -1,3 +1,15 @@
+
+Advent of Code
+
+    [About][Events][Shop][Settings][Log Out]
+
+zvdy 6*
+  {year=>2024}
+
+    [Calendar][AoC++][Sponsors][Leaderboard][Stats]
+
+Our sponsors help make Advent of Code possible:
+BJSS - Delivered by teams of passionate experts, we provide brilliant software engineering that delivers transformative outcomes for our clients.
 --- Day 2: Red-Nosed Reports ---
 
 Fortunately, the first location The Historians want to search isn't a long walk from the Chief Historian's office.
@@ -35,6 +47,7 @@ So, in this example, 2 reports are safe.
 
 Analyze the unusual data from the engineers. How many reports are safe?
 
+Your puzzle answer was 242.
 --- Part Two ---
 
 The engineers are surprised by the low number of safe reports until they realize they forgot to tell you about the Problem Dampener.
@@ -55,3 +68,5 @@ More of the above example's reports are now safe:
 Thanks to the Problem Dampener, 4 reports are actually safe!
 
 Update your analysis by handling situations where the Problem Dampener can remove a single level from unsafe reports. How many reports are now safe?
+
+Your puzzle answer was 311.
