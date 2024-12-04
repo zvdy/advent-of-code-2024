@@ -38,31 +38,24 @@ def count_xmas_patterns(grid):
     cols = len(grid[0])
     xmas_count = 0
 
-    # Function to check if the pattern matches at a specific center (row, col)
-    def is_xmas_center(row, col):
-        # Define the pattern offsets for X-MAS:
-        # M S (top arm)
-        #  A  (center)
-        # M S (bottom arm)
-        pattern_offsets = [
-            [(-1, -1), (1, 1)],  # M S (top-left to bottom-right)
-            [(-1, 1), (1, -1)]   # M S (top-right to bottom-left)
-        ]
-        
-        for offsets in pattern_offsets:
-            try:
-                if (grid[row + offsets[0][0]][col + offsets[0][1]] == 'M' and
-                    grid[row][col] == 'A' and
-                    grid[row + offsets[1][0]][col + offsets[1][1]] == 'S' and
-                    grid[row + offsets[0][0]][col - offsets[0][1]] == 'M' and
-                    grid[row + offsets[1][0]][col - offsets[1][1]] == 'S'):
-                    return True
-            except IndexError:
-                continue
-        return False
+    # Helper function to check MAS sequences
+    def is_mas_sequence(c1, c2, c3):
+        return (c1, c2, c3) in [("M", "A", "S"), ("S", "A", "M")]
 
-    # Iterate over the grid and count valid X-MAS patterns
-    for row in range(1, rows - 1):  # Avoid edges (no valid X-MAS can be centered there)
+    # Function to validate the X-MAS pattern centered at (row, col)
+    def is_xmas_center(row, col):
+        try:
+            # Extract potential arms
+            top_left = (grid[row - 1][col - 1], grid[row][col], grid[row + 1][col + 1])
+            top_right = (grid[row - 1][col + 1], grid[row][col], grid[row + 1][col - 1])
+
+            # Check if both are valid MAS sequences
+            return is_mas_sequence(*top_left) and is_mas_sequence(*top_right)
+        except IndexError:
+            return False  # Out of bounds
+
+    # Iterate over all potential centers in the grid
+    for row in range(1, rows - 1):  # Avoid edges
         for col in range(1, cols - 1):  # Avoid edges
             if is_xmas_center(row, col):
                 xmas_count += 1
