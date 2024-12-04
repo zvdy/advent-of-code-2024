@@ -1,15 +1,3 @@
-
-Advent of Code
-
-    [About][Events][Shop][Settings][Log Out]
-
-zvdy 6*
-   int y=2024;
-
-    [Calendar][AoC++][Sponsors][Leaderboard][Stats]
-
-Our sponsors help make Advent of Code possible:
-Best Buy - Our purpose is to enrich lives through technology. Join us!
 --- Day 4: Ceres Search ---
 
 "Looks like the Chief's not here. Next!" One of The Historians pulls out a device and pushes the only button on it. After a brief flash, you recognize the interior of the Ceres monitoring station!
@@ -52,8 +40,34 @@ S.S.S.S.SS
 
 Take a look at the little Elf's word search. How many times does XMAS appear?
 
-To begin, get your puzzle input.
+Your puzzle answer was 2549.
+--- Part Two ---
 
-Answer:
+The Elf looks quizzically at you. Did you misunderstand the assignment?
 
-You can also [Shareon Bluesky Twitter Mastodon] this puzzle.
+Looking for the instructions, you flip over the word search to find that this isn't actually an XMAS puzzle; it's an X-MAS puzzle in which you're supposed to find two MAS in the shape of an X. One way to achieve that is like this:
+
+M.S
+.A.
+M.S
+
+Irrelevant characters have again been replaced with . in the above diagram. Within the X, each MAS can be written forwards or backwards.
+
+Here's the same example from before, but this time all of the X-MASes have been kept instead:
+
+.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........
+
+In this example, an X-MAS appears 9 times.
+
+Flip the word search from the instructions back over to the word search side and try again. How many times does an X-MAS appear?
+
+Your puzzle answer was 2003.
