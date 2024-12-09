@@ -1,0 +1,31 @@
+name: Get Advent of Code Input
+
+on:
+  schedule:
+    # Runs at 05:00 UTC every day in December
+    - cron: '0 5 * 12 *'
+  workflow_dispatch:
+
+jobs:
+  get-input:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Get Advent of Code input
+      run: |
+        day=$(date +%-d)
+        year=$(date +%Y)
+        mkdir -p day-$day
+        curl -H "Cookie: session=${{ secrets.AOC_SESSION }}" \
+             https://adventofcode.com/$year/day/$day/input -o day-$day/input.txt
+
+    - name: Commit and push input file
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add day-$day/input.txt
+        git commit -m "Add input for day $day"
+        git push
