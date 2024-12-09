@@ -40,4 +40,4 @@ jobs:
         message: "Add input for day ${{ steps.get_input.outputs.day }}"
         add: "day-${{ steps.get_input.outputs.day }}/input.txt"
         push: true
-        github_token: ${{ secrets.GH_PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
