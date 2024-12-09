@@ -25,24 +25,20 @@ jobs:
         day=${{ github.event.inputs.day }}
         year=$(date +%Y)
         mkdir -p day-$day
-        curl -v -H "Cookie: session=${{ secrets.AOC_SESSION }}" \
+        curl -H "Cookie: session=${{ secrets.AOC_SESSION }}" \
              https://adventofcode.com/$year/day/$day/input -o day-$day/input.txt
         echo "::set-output name=day::$day"
 
     - name: Display input file
       run: cat day-${{ steps.get_input.outputs.day }}/input.txt
 
-    - name: Debug environment
-      run: env
-
     - name: Commit and push input file
       env:
         GH_PAT: ${{ secrets.GH_PAT }}
+        EMAIL: ${{ secrets.EMAIL }}
       run: |
-        set -x
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${EMAIL}"
         git add day-${{ steps.get_input.outputs.day }}/input.txt
         git commit -m "Add input for day ${{ steps.get_input.outputs.day }}"
         git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git HEAD:main
-        set +x
