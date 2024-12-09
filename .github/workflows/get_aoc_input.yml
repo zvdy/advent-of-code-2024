@@ -20,17 +20,24 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Get Advent of Code input
+      id: get_input
       run: |
         day=${{ github.event.inputs.day }}
         year=$(date +%Y)
         mkdir -p day-$day
         curl -H "Cookie: session=${{ secrets.AOC_SESSION }}" \
              https://adventofcode.com/$year/day/$day/input -o day-$day/input.txt
+        echo "::set-output name=day::$day"
+
+    - name: Display input file
+      run: cat day-${{ steps.get_input.outputs.day }}/input.txt
 
     - name: Commit and push input file
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add day-$day/input.txt
-        git commit -m "Add input for day $day"
-        git push
+        git add day-${{ steps.get_input.outputs.day }}/input.txt
+        git commit -m "Add input for day ${{ steps.get_input.outputs.day }}"
+        git push https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git HEAD:main
